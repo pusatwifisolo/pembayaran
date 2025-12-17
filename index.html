@@ -923,7 +923,7 @@
         function redirectToWhatsApp(method = '') {
             const message = method 
                 ? encodeURIComponent(`Saya ingin mengkonfirmasi pembayaran melalui ${method}`)
-                : encodeURIComponent(`Saya ingin mengkonfirmasi pembayaran untuk Pusat WiFi Solo`);
+                : encodeURIComponent(`Saya ingin mengkonfirmasi pembayaran tagihan Pusat WiFi Solo`);
             const whatsappUrl = `https://wa.me/6285777773541?text=${message}`;
             setTimeout(() => {
                 window.open(whatsappUrl, '_blank');
@@ -932,7 +932,7 @@
 
         // Redirect to WhatsApp for contact
         function redirectToContactWhatsApp() {
-            const message = encodeURIComponent(`Saya ingin mengkonfirmasi pembayaran untuk Pusat WiFi Solo`);
+            const message = encodeURIComponent(`Saya ingin mengkonfirmasi pembayaran tagihan Pusat WiFi Solo`);
             const whatsappUrl = `https://wa.me/6285777773541?text=${message}`;
             setTimeout(() => {
                 window.open(whatsappUrl, '_blank');
@@ -960,4 +960,5 @@
     </script>
 </body>
 </html>
+
 
