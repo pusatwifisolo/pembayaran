@@ -322,7 +322,7 @@
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         
-        /* Tombol utama */
+        /* Tombol utama (ukuran asli) */
         .btn-primary {
             background: var(--gradient-btn);
             background-size: 200% 200%;
@@ -380,49 +380,226 @@
         }
 
         @media (min-width: 1024px) {
-            .card .flex-wrap {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+            .hero {
+                background-position: 50% center;
             }
-            .card .btn-primary {
-                width: 200px;
-                padding: 14px 0;
-                font-size: 1.1rem;
+            .hero .container {
+                padding: 250px 2rem 0;
+            }
+            .payment-methods {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.25rem;
+                max-width: 1200px;
+                margin: 119.5px auto 2.5rem;
+            }
+            .card {
+                max-width: 450px;
+                min-height: 500px;
+                padding: 2rem;
+            }
+            .card h3 {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
             }
             .card img {
                 max-height: 150px;
                 margin-bottom: 1.5rem;
             }
-        }
-
-        @media (max-width: 1023px) {
-            .card .flex-wrap {
-                flex-direction: row;
-                justify-content: center;
-                gap: 0.75rem;
+            .card p, .card .transfer-details, .card .qris-details, .card .cash-details {
+                font-size: 1.1rem;
+                min-height: 80px;
             }
             .card .btn-primary {
-                flex: 1 1 45%;
-                min-width: 140px;
-                max-width: 180px;
-                padding: 10px 0;
-                font-size: 0.9rem;
+                padding: 14px 0;
+                font-size: 1.1rem;
+                margin-top: 1.5rem;
+                width: 200px;
+            }
+            .card .flex-wrap {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            #payment-steps {
+                margin-top: 16px;
+                margin-bottom: 40px;
+            }
+            #payment-steps ul li {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 1023px) {
+            .hero {
+                background-position: center center;
+                min-height: 100vh;
+            }
+            .hero .container {
+                padding: 254px 1rem 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                height: 100%;
+            }
+            .payment-methods {
+                margin-top: 90px;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 2rem;
+            }
+            .card {
+                padding: 1.5rem;
+                min-height: 360px;
+                max-width: 400px;
+            }
+            .card h3 {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
             }
             .card img {
                 max-height: 100px;
                 margin-bottom: 1rem;
             }
+            .card p, .card .transfer-details, .card .qris-details, .card .cash-details {
+                font-size: 0.9rem;
+            }
+            .card .btn-primary {
+                padding: 10px 0;
+                font-size: 0.9rem;
+                margin-top: 1rem;
+                width: 140px;
+            }
+            .card .flex-wrap {
+                flex-direction: row;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+            #payment-steps {
+                margin-top: 8px;
+                margin-bottom: 40px;
+            }
+            #payment-steps ul li {
+                font-size: 0.9rem;
+            }
         }
-
-        /* Penyesuaian khusus hero di mobile: kurangi 10% atas & 20% bawah */
-        @media (max-width: 1023px) {
+        
+        @media (max-width: 767px) {
             .hero .container {
-                padding-top: 229px !important; /* 254px - 10% ≈ 229px */
-                padding-bottom: 0;
+                padding: 254px 1rem 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                height: 100%;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            .hero h2 {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
+            }
+            .hero p {
+                font-size: 1.25rem;
+                margin-bottom: 2rem;
             }
             .hero p.italic {
-                margin-bottom: 2.4rem !important; /* 3rem - 20% ≈ 2.4rem */
+                font-size: 1rem;
+                margin-bottom: 3rem;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                right: 15px;
+            }
+            .whatsapp-float img {
+                width: 30px;
+                height: 30px;
+            }
+            .payment-methods {
+                margin-top: 67.5px;
+            }
+            .card {
+                padding: 1.5rem;
+                min-height: 360px;
+                max-width: 400px;
+            }
+            #payment-steps {
+                margin-top: 8px;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero .container {
+                padding: 254px 0.75rem 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                height: 100%;
+            }
+            .hero h1 {
+                font-size: 2.25rem;
+                margin-bottom: 1rem;
+            }
+            .hero h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            .hero p {
+                font-size: 0.875rem;
+                margin-bottom: 2rem;
+            }
+            .hero p.italic {
+                font-size: 0.75rem;
+                margin-bottom: 3rem;
+            }
+            .card {
+                padding: 1rem;
+                min-height: 320px;
+                max-width: 300px;
+            }
+            .card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.75rem;
+            }
+            .card img {
+                max-height: 80px;
+                margin-bottom: 0.75rem;
+            }
+            .card p, .card .transfer-details, .card .qris-details, .card .cash-details {
+                font-size: 0.8rem;
+            }
+            .card .btn-primary {
+                padding: 8px 0;
+                font-size: 0.8rem;
+                margin-top: 0.75rem;
+                width: 120px;
+            }
+            .whatsapp-float {
+                width: 40px;
+                height: 40px;
+                bottom: 10px;
+                right: 10px;
+            }
+            .whatsapp-float img {
+                width: 25px;
+                height: 25px;
+            }
+            .payment-methods {
+                margin-top: 50px;
+            }
+            #payment-steps {
+                margin-top: 8px;
+                margin-bottom: 40px;
             }
         }
         
