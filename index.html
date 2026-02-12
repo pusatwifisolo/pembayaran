@@ -17,9 +17,22 @@
             font-family: 'Poppins', sans-serif;
         }
         
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #7c3aed;
+            --accent-orange: #f97316;
+            --gradient-btn: linear-gradient(45deg, #2563eb, #7c3aed, #ec4899);
+            --gradient-btn-hover: linear-gradient(45deg, #ec4899, #7c3aed, #2563eb);
+            --glow-blue: rgba(37, 99, 235, 0.35);
+            --glow-cyan: rgba(6, 182, 212, 0.45);
+        }
+        
         body {
             margin: 0;
             overflow-x: hidden;
+            background: #f8fafc;
         }
         
         .loading-screen {
@@ -108,24 +121,23 @@
             padding: 1rem 1rem;
         }
 
-        /* Font sizes untuk elemen header */
         .header-logo-text {
-            font-size: 24px; /* text-2xl dari Tailwind CSS */
-            font-weight: 700; /* font-bold */
+            font-size: 24px;
+            font-weight: 700;
         }
 
         .header-nav-links {
-            font-size: 16px; /* text-base dari Tailwind CSS */
-            font-weight: 500; /* font-medium */
+            font-size: 16px;
+            font-weight: 500;
         }
 
         .header-mobile-menu-links {
-            font-size: 16px; /* text-base dari Tailwind CSS */
-            font-weight: 400; /* default */
+            font-size: 16px;
+            font-weight: 400;
         }
 
         .header-menu-toggle-icon {
-            font-size: 24px; /* text-2xl dari Tailwind CSS */
+            font-size: 24px;
         }
         
         .hero {
@@ -177,7 +189,7 @@
             position: absolute;
             width: 50%;
             height: 3px;
-            background: #3b82f6;
+            background: var(--primary);
             bottom: 0;
             left: 25%;
             transform: translateX(-25%);
@@ -221,7 +233,7 @@
         }
         
         .image-overlay .close-btn:hover {
-            color: #3b82f6;
+            color: var(--primary);
             transform: rotate(90deg) scale(1.2);
         }
         
@@ -276,22 +288,33 @@
             margin-top: 90px;
         }
         
-        /* Enhanced Popup Styling */
+        /* Popup "Rekening telah disalin" sekarang pakai gradient sama seperti button */
         .popup-notification {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: linear-gradient(45deg, #3b82f6, #1e3a8a);
+            background: var(--gradient-btn);           /* gradient sama dengan button */
+            background-size: 200% 200%;
             color: white;
             padding: 1rem 2rem;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px var(--glow-blue);
             font-size: 1rem;
             font-weight: 500;
             text-align: center;
             border: 2px solid rgba(255, 255, 255, 0.3);
             animation: popIn 0.3s ease-out forwards;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5000;
+        }
+        
+        .popup-notification:hover {
+            background-position: 100% 100%;
+            box-shadow: 0 15px 30px var(--glow-cyan);
         }
         
         .popup-notification i {
@@ -300,7 +323,63 @@
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         
-        /* Responsive adjustments */
+        /* Tombol utama (tetap seperti kode asli) */
+        .btn-primary {
+            background: var(--gradient-btn);
+            background-size: 200% 200%;
+            padding: 12px 0;
+            border-radius: 9999px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.5s ease;
+            box-shadow: 0 8px 20px var(--glow-blue);
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            text-align: center;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            min-width: 140px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px var(--glow-cyan);
+            background-position: 100% 100%;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.25) 10%, transparent 40%);
+            opacity: 0;
+            transition: opacity 0.6s;
+        }
+
+        .btn-primary:hover::after {
+            opacity: 1;
+            animation: ripple 1.2s ease-out;
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(0.4); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        /* Tombol di mobile 2 per baris, desktop 1 per baris + centered */
+        .card .flex-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
         @media (min-width: 1024px) {
             .hero {
                 background-position: 50% center;
@@ -339,6 +418,8 @@
                 width: 200px;
             }
             .card .flex-wrap {
+                flex-direction: column;
+                align-items: center;
                 gap: 1rem;
             }
             #payment-steps {
@@ -395,7 +476,9 @@
                 width: 140px;
             }
             .card .flex-wrap {
-                gap: 0.5rem;
+                flex-direction: row;
+                justify-content: center;
+                gap: 0.75rem;
             }
             #payment-steps {
                 margin-top: 8px;
@@ -521,55 +604,20 @@
             }
         }
         
-        .btn-primary {
-            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
-            padding: 12px 0;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            color: white;
-            font-weight: 600;
-            display: inline-block;
-            text-align: center;
+        /* Icon di Cara Pembayaran matching dengan button */
+        #payment-steps i {
+            color: var(--primary);
+            transition: color 0.3s ease;
         }
-        
-        .btn-primary:hover {
-            background: linear-gradient(45deg, #3b82f6, #1e3a8a);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes popIn {
-            from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
-            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-        
-        @keyframes animateC {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes animate {
-            0% { transform: rotate(45deg); }
-            100% { transform: rotate(405deg); }
+
+        #payment-steps li:hover i {
+            color: #1e40af;
         }
     </style>
 </head>
 <body>
     <header class="bg-white shadow-md fixed w-full z-50">
-        <div class="container mx-auto max-width-1200px px-4 py-4 flex justify-between items-center">
+        <div class="container mx-auto max-w-1200px px-4 py-4 flex justify-between items-center">
             <div class="flex items-center">
                 <img src="https://github.com/pusatwifisolo/wifi/blob/main/logopwslow.png?raw=true" alt="Logo" class="w-12 h-12 mr-3">
                 <span class="header-logo-text text-gray-800">Pusat WiFi <span class="text-blue-600">Solo</span></span>
@@ -599,15 +647,15 @@
     </div>
 
     <section class="hero" id="mainContainer">
-        <div class="container mx-auto max-width-1200px px-4 text-center">
+        <div class="container mx-auto max-w-1200px px-4 text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-4">Pembayaran</h1>
             <h2 class="text-2xl md:text-3xl font-bold mb-4">Pusat WiFi Solo</h2>
-            <p class="text-xl md:text-2xl mb-8 max-width-3xl mx-auto">Lunas Lebih Cepat, Internet Lebih Lancar</p>
-            <p class="text-lg md:text-xl mb-12 italic max-width-3xl mx-auto">Proses Mudah, Aman, dan Terpercaya</p>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Lunas Lebih Cepat, Internet Lebih Lancar</p>
+            <p class="text-lg md:text-xl mb-12 italic max-w-3xl mx-auto">Proses Mudah, Aman, dan Terpercaya</p>
         </div>
     </section>
 
-    <div class="container mx-auto max-width-1200px px-4">
+    <div class="container mx-auto max-w-1200px px-4">
         <section class="payment-methods">
             <div class="card p-4 md:p-6 text-center">
                 <h3 class="text-lg md:text-2xl font-bold mb-4">TRANSFER</h3>
@@ -621,30 +669,32 @@
                     <span class="colon">:</span>
                     <span>RIDWAN BUDI LAKSONO</span>
                 </div>
-                <div class="flex justify-center gap-2 flex-wrap">
+                <div class="flex-wrap flex justify-center gap-2">
                     <a href="javascript:void(0)" class="btn-primary no-highlight" onclick="showImage('https://github.com/ridwanbudilaksono/wifi/blob/main/bcapay.jpg?raw=true')">Tampilkan</a>
                     <a href="javascript:void(0)" class="btn-primary no-highlight" onclick="redirectToWhatsApp('Transfer')">Konfirmasi</a>
                     <a href="javascript:void(0)" class="btn-primary no-highlight copy-btn" onclick="copyAccountNumber(this, event)">Salin Rekening</a>
                 </div>
             </div>
+
             <div class="card p-4 md:p-6 text-center qris">
                 <h3 class="text-lg md:text-2xl font-bold mb-4">QRIS</h3>
                 <img src="https://github.com/pusatwifisolo/wifi/blob/main/qrislogo.png?raw=true" alt="QRIS Logo" class="mx-auto mb-4">
                 <div class="qris-details text-sm md:text-base mb-6">
                     <p>Scan kode QR untuk pembayaran<br>Kirim bukti ke WhatsApp</p>
                 </div>
-                <div class="flex justify-center gap-2 flex-wrap">
+                <div class="flex-wrap flex justify-center gap-2">
                     <a href="javascript:void(0)" class="btn-primary no-highlight" onclick="showImage('https://github.com/pusatwifisolo/wifi/blob/main/qris_pusatwifisolo.jpg?raw=true')">Tampilkan</a>
                     <a href="javascript:void(0)" class="btn-primary no-highlight" onclick="redirectToWhatsApp('QRIS')">Konfirmasi</a>
                 </div>
             </div>
+
             <div class="card p-4 md:p-6 text-center cash">
                 <h3 class="text-lg md:text-2xl font-bold mb-4">CASH</h3>
                 <img src="https://github.com/ridwanbudilaksono/wifi/blob/main/dompetlogonew.png?raw=true" alt="Cash Logo" class="mx-auto mb-4">
                 <div class="cash-details text-sm md:text-base mb-6">
                     <p>Hubungi kami untuk pembayaran tunai<br>Kirim konfirmasi ke WhatsApp</p>
                 </div>
-                <div class="flex justify-center gap-2 flex-wrap">
+                <div class="flex-wrap flex justify-center gap-2">
                     <a href="javascript:void(0)" class="btn-primary no-highlight" onclick="redirectToWhatsApp('Cash')">Konfirmasi</a>
                 </div>
             </div>
@@ -652,33 +702,33 @@
 
         <section id="payment-steps" class="bg-white p-6 rounded-xl shadow-md text-center">
             <h2 class="text-2xl md:text-3xl font-bold mb-4 section-title mx-auto">Cara Pembayaran</h2>
-            <ul class="text-left max-width-2xl mx-auto text-sm md:text-base space-y-3">
+            <ul class="text-left max-w-2xl mx-auto text-sm md:text-base space-y-3">
                 <li class="flex items-start">
-                    <i class="fas fa-user-plus text-blue-600 mr-4"></i>
+                    <i class="fas fa-user-plus mr-4 mt-1"></i>
                     <span>Pilih metode pembayaran (Transfer, QRIS, atau Cash).</span>
                 </li>
                 <li class="flex items-start">
-                    <i class="fas fa-list text-blue-600 mr-4"></i>
+                    <i class="fas fa-list mr-4 mt-1"></i>
                     <span>Untuk Transfer: Gunakan nomor rekening BCA: 817-540-2043 (A/N: RIDWAN BUDI LAKSONO) atau salin nomor rekening dengan tombol "Salin Rekening".</span>
                 </li>
                 <li class="flex items-start">
-                    <i class="fas fa-qrcode text-blue-600 mr-4"></i>
+                    <i class="fas fa-qrcode mr-4 mt-1"></i>
                     <span>Untuk QRIS: Scan kode QR menggunakan tombol "Tampilkan".</span>
                 </li>
                 <li class="flex items-start">
-                    <i class="fas fa-money-bill-wave text-blue-600 mr-4"></i>
+                    <i class="fas fa-money-bill-wave mr-4 mt-1"></i>
                     <span>Untuk Cash: Hubungi kami melalui WhatsApp untuk detail pembayaran tunai.</span>
                 </li>
                 <li class="flex items-start">
-                    <i class="fas fa-comment-alt text-blue-600 mr-4"></i>
+                    <i class="fas fa-comment-alt mr-4 mt-1"></i>
                     <span>Kirim bukti atau konfirmasi pembayaran melalui WhatsApp ke nomor <a href="javascript:void(0)" class="text-blue-600 hover:text-blue-800 no-highlight" onclick="redirectToWhatsApp()">0857 7777 3541</a>.</span>
                 </li>
                 <li class="flex items-start">
-                    <i class="fas fa-clock text-blue-600 mr-4"></i>
+                    <i class="fas fa-clock mr-4 mt-1"></i>
                     <span>Tunggu konfirmasi dari tim kami dalam waktu 1x24 jam.</span>
                 </li>
                 <li class="flex items-start">
-                    <i class="fas fa-check-circle text-blue-600 mr-4"></i>
+                    <i class="fas fa-check-circle mr-4 mt-1"></i>
                     <span>Nikmati layanan internet tanpa gangguan!</span>
                 </li>
             </ul>
@@ -686,7 +736,7 @@
     </div>
 
     <div class="image-overlay" id="imageOverlay">
-        <span class="close-btn" onclick="closeImageOverlay()">&times;</span>
+        <span class="close-btn" onclick="closeImageOverlay()">×</span>
         <img id="overlayImage" src="" alt="Payment Image">
     </div>
 
@@ -695,7 +745,7 @@
     </div>
 
     <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto max-width-1200px px-4 pt-12">
+        <div class="container mx-auto max-w-1200px px-4 pt-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <div class="flex items-center mb-6">
@@ -732,52 +782,12 @@
     </footer>
 
     <script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-
         // Mobile menu toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
         
-        // Close menu when clicking outside
         document.addEventListener('click', function(event) {
             const menu = document.getElementById('mobile-menu');
             const toggle = document.getElementById('menu-toggle');
@@ -791,7 +801,6 @@
             initializePaymentPage();
         });
 
-        // Initialize payment page
         function initializePaymentPage() {
             const mainContainer = document.getElementById('mainContainer');
             mainContainer.style.display = 'block';
@@ -800,7 +809,6 @@
             initWhatsAppFloatAnimation();
         }
 
-        // Function to wait for card images to load before showing cards and hiding loading screen
         function waitForImages() {
             const loadingScreen = document.getElementById('loadingScreen');
             const cards = document.querySelectorAll('.payment-methods .card');
@@ -854,7 +862,6 @@
             });
         }
 
-        // WhatsApp float animation
         function initWhatsAppFloatAnimation() {
             const whatsappFloat = document.getElementById('whatsappFloat');
             const whatsappIcon = document.querySelector('.whatsapp-float img');
@@ -879,7 +886,6 @@
             setTimeout(showWhatsAppFloat, 5000);
         }
 
-        // Show full-screen image
         function showImage(imageUrl) {
             const overlay = document.getElementById('imageOverlay');
             const overlayImage = document.getElementById('overlayImage');
@@ -887,14 +893,12 @@
             overlay.classList.add('show');
         }
 
-        // Close full-screen image
         function closeImageOverlay() {
             const overlay = document.getElementById('imageOverlay');
             overlay.classList.remove('show');
             document.getElementById('overlayImage').src = '';
         }
 
-        // Copy account number to clipboard and show enhanced popup
         function copyAccountNumber(button, event) {
             navigator.clipboard.writeText('8175402043').then(() => {
                 const popup = document.createElement('div');
@@ -919,7 +923,6 @@
             });
         }
 
-        // Redirect to WhatsApp for payment confirmation
         function redirectToWhatsApp(method = '') {
             const message = method 
                 ? encodeURIComponent(`Saya ingin mengkonfirmasi pembayaran melalui ${method}`)
@@ -930,7 +933,6 @@
             }, 300);
         }
 
-        // Redirect to WhatsApp for contact
         function redirectToContactWhatsApp() {
             const message = encodeURIComponent(`Saya ingin mengkonfirmasi pembayaran tagihan Pusat WiFi Solo`);
             const whatsappUrl = `https://wa.me/6285777773541?text=${message}`;
@@ -939,7 +941,6 @@
             }, 300);
         }
 
-        // Card animation on scroll
         const cards = document.querySelectorAll('.card');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
@@ -960,5 +961,3 @@
     </script>
 </body>
 </html>
-
-
