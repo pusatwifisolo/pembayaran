@@ -306,45 +306,72 @@
             box-shadow: 0 14px 32px var(--glow-cyan);
             background-position: 100% 100%;
         }
+        .btn-primary:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px var(--glow-blue);
+        }
 
-        /* Popup Copy yang lebih fancy */
-        .copy-popup {
+        /* Popup Copy - CENTERED DI TENGAH LAYAR */
+        .copy-popup-overlay {
             position: fixed;
-            bottom: 90px;
-            right: 30px;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .copy-popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .copy-popup {
             background: linear-gradient(135deg, #10b981, #059669);
             color: white;
-            padding: 14px 24px;
-            border-radius: 9999px;
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+            padding: 1.5rem 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.15) inset;
             display: flex;
             align-items: center;
-            gap: 12px;
-            z-index: 2000;
+            gap: 1rem;
+            max-width: 90%;
+            text-align: center;
+            transform: scale(0.8);
             opacity: 0;
-            transform: translateY(30px) scale(0.9);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .copy-popup.show {
+            transform: scale(1);
             opacity: 1;
-            transform: translateY(0) scale(1);
         }
         .copy-popup i {
-            font-size: 1.4rem;
+            font-size: 2rem;
             animation: pulse-ring 2s infinite;
         }
         .copy-popup span {
+            font-size: 1.1rem;
             font-weight: 600;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
         }
         @keyframes pulse-ring {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
+    <!-- Audio elements -->
+    <audio id="soundClick" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="soundSuccess" preload="auto">
+        <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
+    </audio>
+
     <!-- Header -->
     <header class="bg-white shadow-md fixed w-full z-50">
         <div class="container mx-auto max-w-1200px px-4 py-4 flex justify-between items-center">
@@ -402,11 +429,11 @@
                 <div class="flex flex-col gap-3 mt-4">
                     <div class="flex justify-center gap-3 w-full">
                         <a href="javascript:void(0)" class="btn-primary no-highlight flex-1 max-w-[46%]"
-                           onclick="showImage('https://github.com/ridwanbudilaksono/wifi/blob/main/bcapay.jpg?raw=true')">
+                           onclick="playClick(); showImage('https://github.com/ridwanbudilaksono/wifi/blob/main/bcapay.jpg?raw=true')">
                             Tampilkan
                         </a>
                         <a href="javascript:void(0)" class="btn-primary no-highlight flex-1 max-w-[46%]"
-                           onclick="redirectToWhatsApp('Transfer')">
+                           onclick="playClick(); redirectToWhatsApp('Transfer')">
                             Konfirmasi
                         </a>
                     </div>
@@ -427,11 +454,11 @@
                 <div class="flex flex-col gap-3 mt-4">
                     <div class="flex justify-center gap-3 w-full">
                         <a href="javascript:void(0)" class="btn-primary no-highlight flex-1 max-w-[46%]"
-                           onclick="showImage('https://github.com/pusatwifisolo/wifi/blob/main/qris_pusatwifisolo.jpg?raw=true')">
+                           onclick="playClick(); showImage('https://github.com/pusatwifisolo/wifi/blob/main/qris_pusatwifisolo.jpg?raw=true')">
                             Tampilkan
                         </a>
                         <a href="javascript:void(0)" class="btn-primary no-highlight flex-1 max-w-[46%]"
-                           onclick="redirectToWhatsApp('QRIS')">
+                           onclick="playClick(); redirectToWhatsApp('QRIS')">
                             Konfirmasi
                         </a>
                     </div>
@@ -446,7 +473,7 @@
                     <p>Hubungi kami untuk pembayaran tunai<br>Kirim konfirmasi ke WhatsApp</p>
                 </div>
                 <div class="flex flex-wrap justify-center gap-2">
-                    <a href="javascript:void(0)" class="btn-primary no-highlight" onclick="redirectToWhatsApp('Cash')">Konfirmasi</a>
+                    <a href="javascript:void(0)" class="btn-primary no-highlight" onclick="playClick(); redirectToWhatsApp('Cash')">Konfirmasi</a>
                 </div>
             </div>
         </section>
@@ -458,7 +485,7 @@
                 <li class="flex items-start"><i class="fas fa-list mr-4 mt-1"></i><span>Untuk Transfer: Gunakan nomor rekening BCA: 817-540-2043 (A/N: RIDWAN BUDI LAKSONO) atau salin nomor rekening dengan tombol "Salin Rekening".</span></li>
                 <li class="flex items-start"><i class="fas fa-qrcode mr-4 mt-1"></i><span>Untuk QRIS: Scan kode QR menggunakan tombol "Tampilkan".</span></li>
                 <li class="flex items-start"><i class="fas fa-money-bill-wave mr-4 mt-1"></i><span>Untuk Cash: Hubungi kami melalui WhatsApp untuk detail pembayaran tunai.</span></li>
-                <li class="flex items-start"><i class="fas fa-comment-alt mr-4 mt-1"></i><span>Kirim bukti atau konfirmasi pembayaran melalui WhatsApp ke nomor <a href="javascript:void(0)" class="text-blue-600 hover:text-blue-800 no-highlight" onclick="redirectToWhatsApp()">0857 7777 3541</a>.</span></li>
+                <li class="flex items-start"><i class="fas fa-comment-alt mr-4 mt-1"></i><span>Kirim bukti atau konfirmasi pembayaran melalui WhatsApp ke nomor <a href="javascript:void(0)" class="text-blue-600 hover:text-blue-800 no-highlight" onclick="playClick(); redirectToWhatsApp()">0857 7777 3541</a>.</span></li>
                 <li class="flex items-start"><i class="fas fa-clock mr-4 mt-1"></i><span>Tunggu konfirmasi dari tim kami dalam waktu 1x24 jam.</span></li>
                 <li class="flex items-start"><i class="fas fa-check-circle mr-4 mt-1"></i><span>Nikmati layanan internet tanpa gangguan!</span></li>
             </ul>
@@ -470,8 +497,16 @@
         <img id="overlayImage" src="" alt="Payment Image">
     </div>
 
-    <div class="whatsapp-float" id="whatsappFloat" onclick="redirectToContactWhatsApp()">
+    <div class="whatsapp-float" id="whatsappFloat" onclick="playClick(); redirectToContactWhatsApp()">
         <img src="https://github.com/ridwanbudilaksono/wifi/blob/main/whatsapp.png?raw=true" alt="WhatsApp">
+    </div>
+
+    <!-- Popup Copy (centered) -->
+    <div class="copy-popup-overlay" id="copyPopupOverlay">
+        <div class="copy-popup" id="copyPopup">
+            <i class="fas fa-check-circle text-3xl"></i>
+            <span>Rekening berhasil disalin!</span>
+        </div>
     </div>
 
     <footer class="bg-gray-800 text-white">
@@ -496,7 +531,7 @@
                 <div>
                     <h3 class="text-lg font-bold mb-6">Tetap Terhubung</h3>
                     <div class="flex space-x-4 mb-6">
-                        <a href="javascript:void(0)" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-600 no-highlight" onclick="redirectToContactWhatsApp('general')">
+                        <a href="javascript:void(0)" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-600 no-highlight" onclick="playClick(); redirectToContactWhatsApp('general')">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                         <a href="mailto:halopusatwifisolo@gmail.com?subject=Informasi%20Pasang%20WiFi%20Solo" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-600 no-highlight">
@@ -512,6 +547,23 @@
     </footer>
 
     <script type="text/javascript">
+        // Audio
+        const soundClick = document.getElementById('soundClick');
+        const soundSuccess = document.getElementById('soundSuccess');
+        soundClick.volume = 0.5;
+        soundSuccess.volume = 0.6;
+
+        function playClick() {
+            soundClick.currentTime = 0;
+            soundClick.play().catch(() => {});
+        }
+
+        function playSuccess() {
+            soundSuccess.currentTime = 0;
+            soundSuccess.play().catch(() => {});
+        }
+
+        // Mobile Menu
         document.getElementById('menu-toggle').addEventListener('click', function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
@@ -573,27 +625,22 @@
         function copyAccountNumber(e) {
             e.preventDefault();
             navigator.clipboard.writeText('8175402043').then(() => {
-                // Hapus popup lama jika ada
-                const oldPopup = document.querySelector('.copy-popup');
-                if (oldPopup) oldPopup.remove();
+                playSuccess();
 
-                // Buat popup baru
-                const popup = document.createElement('div');
-                popup.className = 'copy-popup';
-                popup.innerHTML = `
-                    <i class="fas fa-check-circle"></i>
-                    <span>Rekening berhasil disalin!</span>
-                `;
-                document.body.appendChild(popup);
+                // Tampilkan popup di tengah
+                const overlay = document.getElementById('copyPopupOverlay');
+                const popup = document.getElementById('copyPopup');
 
-                // Trigger animasi masuk
-                setTimeout(() => popup.classList.add('show'), 10);
+                overlay.classList.add('show');
+                setTimeout(() => popup.classList.add('show'), 50);
 
-                // Hilangkan setelah 2.8 detik
+                // Hilangkan setelah 2.5 detik
                 setTimeout(() => {
                     popup.classList.remove('show');
-                    setTimeout(() => popup.remove(), 400); // tunggu animasi keluar selesai
-                }, 2800);
+                    setTimeout(() => {
+                        overlay.classList.remove('show');
+                    }, 300);
+                }, 2500);
             }).catch(err => {
                 console.error('Gagal menyalin:', err);
                 alert('Gagal menyalin nomor rekening');
@@ -611,7 +658,7 @@
 
         const cards = document.querySelectorAll('.card');
         const observer = new IntersectionObserver(entries => {
-            entries.forEach((entry) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
