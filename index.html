@@ -296,6 +296,11 @@
             z-index: 5000;
         }
     
+        .popup-notification:hover {
+            background-position: 100% 100%;
+            box-shadow: 0 15px 30px var(--glow-cyan);
+        }
+    
         .btn-primary {
             background: var(--gradient-btn);
             background-size: 200% 200%;
@@ -363,17 +368,12 @@
         }
     
         @media (max-width: 1023px) {
-            .hero {
-                height: 68vh;                         /* dikurangi agar bawah gambar terpotong ~35% */
-                min-height: auto;
-                background-position: 50% 25%;         /* geser fokus sedikit ke atas agar teks tetap bagus */
-            }
-            .hero .container {
-                padding: 100px 1rem 1.5rem;           /* teks turun sedikit, tidak terlalu atas */
-            }
+            .hero { min-height: 90vh; background-position: center center; }
+            .hero .container { padding: 180px 1rem 0; }
             .payment-methods {
-                margin-top: 1rem;                     /* jarak ke card pertama lebih rapat */
-                margin-bottom: 1.75rem;
+                margin: 1.75rem 0 1.75rem;
+                display: flex;
+                flex-direction: column;
                 gap: 1.5rem;
             }
             .card { padding: 1.5rem; min-height: 380px; }
@@ -381,7 +381,7 @@
     
         #payment-steps {
             margin-top: 1.75rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.75rem;
             padding: 2.5rem 1.5rem;
             background: white;
             border-radius: 1rem;
@@ -391,7 +391,7 @@
         footer {
             background: #1f2937;
             color: white;
-            padding: 2rem 0 1.5rem;
+            padding: 2rem 0 1.5rem;        /* ← dikurangi agar area hitam atas lebih kecil */
         }
     
         #payment-steps i {
@@ -532,8 +532,8 @@
         <img src="https://github.com/ridwanbudilaksono/wifi/blob/main/whatsapp.png?raw=true" alt="WhatsApp">
     </div>
 
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto max-w-1200px px-4 pt-12">
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto max-w-1200px px-4 py-8">  <!-- py-8 lebih kecil dari py-12 sebelumnya -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <div class="flex items-center mb-6">
@@ -563,7 +563,7 @@
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400">
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
                 <p>© 2025 Pusat WiFi Solo. All rights reserved.</p>
             </div>
         </div>
