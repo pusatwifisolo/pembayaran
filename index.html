@@ -120,7 +120,6 @@
             max-width: 1200px;
             padding: 1rem;
         }
-    
         .header-logo-text { font-size: 24px; font-weight: 700; }
         .header-nav-links { font-size: 16px; font-weight: 500; }
         .header-mobile-menu-links { font-size: 16px; font-weight: 400; }
@@ -141,7 +140,7 @@
         }
     
         .hero .container {
-            padding: 250px 2rem 0;
+            padding: 220px 2rem 0;
             text-align: center;
             max-width: 1200px;
         }
@@ -271,8 +270,7 @@
         }
     
         .payment-methods {
-            margin-top: 110px;
-            padding-top: 2rem;
+            margin: 2.5rem 0;
         }
     
         .popup-notification {
@@ -350,14 +348,6 @@
             100% { transform: scale(2); opacity: 0; }
         }
     
-        .card .flex-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-        }
-    
         @media (min-width: 1024px) {
             .hero { background-position: 50% center; }
             .hero .container { padding: 250px 2rem 0; }
@@ -366,7 +356,7 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 1.25rem;
                 max-width: 1200px;
-                margin: 130px auto 2.5rem;
+                margin: 3.5rem auto 3.5rem;
             }
             .card {
                 max-width: 450px;
@@ -375,67 +365,33 @@
             }
             .card h3 { font-size: 1.75rem; margin-bottom: 1rem; }
             .card img { max-height: 150px; margin-bottom: 1.5rem; }
-            .card p, .card .transfer-details, .card .qris-details, .card .cash-details {
-                font-size: 1.1rem;
-                min-height: 80px;
-            }
-            .card .btn-primary {
-                padding: 13px 0;
-                font-size: 1.05rem;
-                margin-top: 1.5rem;
-                width: 190px;
-            }
-            .card .flex-wrap {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
         }
     
         @media (max-width: 1023px) {
-            .hero { min-height: 100vh; background-position: center center; }
-            .hero .container {
-                padding: 254px 1rem 0;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-            }
+            .hero { min-height: 90vh; background-position: center center; }
+            .hero .container { padding: 180px 1rem 0; }
             .payment-methods {
-                margin-top: 110px;
+                margin: 1.75rem 0 1.75rem;
                 display: flex;
                 flex-direction: column;
-                gap: 1rem;
-                width: 100%;
-                margin-bottom: 2rem;
+                gap: 1.5rem;
             }
-            .card { padding: 1.5rem; min-height: 360px; max-width: 400px; }
-            .card .btn-primary {
-                padding: 10px 0;
-                font-size: 0.9rem;
-                width: 135px;
-            }
-            .card .flex-wrap {
-                flex-direction: row;
-                justify-content: center;
-                gap: 0.75rem;
-            }
+            .card { padding: 1.5rem; min-height: 380px; }
         }
     
         #payment-steps {
-            margin-top: 1.5rem;
-            margin-bottom: 2.5rem;
+            margin-top: 1.75rem;
+            margin-bottom: 1.75rem;
             padding: 2.5rem 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
     
         footer {
             background: #1f2937;
             color: white;
-            padding: 2.5rem 0 1.5rem;
-        }
-    
-        footer .container {
-            max-width: 1200px;
+            padding: 2rem 0 1.5rem;        /* ← dikurangi agar area hitam atas lebih kecil */
         }
     
         #payment-steps i {
@@ -553,18 +509,18 @@
             </div>
         </section>
 
-	<section id="payment-steps" class="bg-white rounded-xl shadow-md text-center">
-		<h2 class="text-2xl md:text-3xl font-bold mb-4 section-title mx-auto">Cara Pembayaran</h2>
-		<ul class="text-left max-w-2xl mx-auto text-sm md:text-base space-y-3">
-			<li class="flex items-start"><i class="fas fa-user-plus mr-4 mt-1"></i><span>Pilih metode pembayaran (Transfer, QRIS, atau Cash).</span></li>
-			<li class="flex items-start"><i class="fas fa-list mr-4 mt-1"></i><span>Untuk Transfer: Gunakan nomor rekening BCA: 817-540-2043<br>(A/N: RIDWAN BUDI LAKSONO) atau salin nomor rekening<br>dengan tombol "Salin Rekening".</span></li>
-			<li class="flex items-start"><i class="fas fa-qrcode mr-4 mt-1"></i><span>Untuk QRIS: Scan kode QR menggunakan tombol "Tampilkan".</span></li>
-			<li class="flex items-start"><i class="fas fa-money-bill-wave mr-4 mt-1"></i><span>Untuk Cash: Hubungi kami melalui WhatsApp untuk detail pembayaran tunai.</span></li>
-			<li class="flex items-start"><i class="fas fa-comment-alt mr-4 mt-1"></i><span>Kirim bukti atau konfirmasi pembayaran melalui WhatsApp<br>ke nomor <a href="javascript:void(0)" class="text-blue-600 hover:text-blue-800 no-highlight" onclick="redirectToWhatsApp()">0857 7777 3541</a>.</span></li>
-			<li class="flex items-start"><i class="fas fa-clock mr-4 mt-1"></i><span>Tunggu konfirmasi dari tim kami dalam waktu 1x24 jam.</span></li>
-			<li class="flex items-start"><i class="fas fa-check-circle mr-4 mt-1"></i><span>Nikmati layanan internet tanpa gangguan!</span></li>
-		</ul>
-	</section>
+        <section id="payment-steps" class="bg-white rounded-xl shadow-md text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 section-title mx-auto">Cara Pembayaran</h2>
+            <ul class="text-left max-w-2xl mx-auto text-sm md:text-base space-y-3">
+                <li class="flex items-start"><i class="fas fa-user-plus mr-4 mt-1"></i><span>Pilih metode pembayaran (Transfer, QRIS, atau Cash).</span></li>
+                <li class="flex items-start"><i class="fas fa-list mr-4 mt-1"></i><span>Untuk Transfer: Gunakan nomor rekening BCA: 817-540-2043 (A/N: RIDWAN BUDI LAKSONO) atau salin nomor rekening dengan tombol "Salin Rekening".</span></li>
+                <li class="flex items-start"><i class="fas fa-qrcode mr-4 mt-1"></i><span>Untuk QRIS: Scan kode QR menggunakan tombol "Tampilkan".</span></li>
+                <li class="flex items-start"><i class="fas fa-money-bill-wave mr-4 mt-1"></i><span>Untuk Cash: Hubungi kami melalui WhatsApp untuk detail pembayaran tunai.</span></li>
+                <li class="flex items-start"><i class="fas fa-comment-alt mr-4 mt-1"></i><span>Kirim bukti atau konfirmasi pembayaran melalui WhatsApp ke nomor <a href="javascript:void(0)" class="text-blue-600 hover:text-blue-800 no-highlight" onclick="redirectToWhatsApp()">0857 7777 3541</a>.</span></li>
+                <li class="flex items-start"><i class="fas fa-clock mr-4 mt-1"></i><span>Tunggu konfirmasi dari tim kami dalam waktu 1x24 jam.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle mr-4 mt-1"></i><span>Nikmati layanan internet tanpa gangguan!</span></li>
+            </ul>
+        </section>
     </div>
 
     <div class="image-overlay" id="imageOverlay">
@@ -576,8 +532,8 @@
         <img src="https://github.com/ridwanbudilaksono/wifi/blob/main/whatsapp.png?raw=true" alt="WhatsApp">
     </div>
 
-    <footer>
-        <div class="container mx-auto px-4">
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto max-w-1200px px-4 py-8">  <!-- py-8 lebih kecil dari py-12 sebelumnya -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <div class="flex items-center mb-6">
@@ -672,8 +628,6 @@
                 popup.innerHTML = '<i class="fas fa-check-circle"></i> Rekening telah disalin';
                 document.body.appendChild(popup);
                 setTimeout(() => popup.remove(), 2500);
-            }).catch(() => {
-                alert('Gagal menyalin nomor rekening');
             });
         }
         function redirectToWhatsApp(method = '') {
@@ -685,7 +639,7 @@
         }
         const cards = document.querySelectorAll('.card');
         const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
+            entries.forEach((entry, i) => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
