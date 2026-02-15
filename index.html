@@ -344,31 +344,34 @@
 </head>
 <body>
     <!-- Header sama persis seperti asli Anda -->
-<header class="bg-white shadow-md fixed w-full z-50">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div class="flex items-center">
-            <img src="https://github.com/pusatwifisolo/wifi/blob/main/logopwslow.png?raw=true" alt="Logo" class="w-12 h-12 mr-3">
-            <span class="text-2xl font-bold text-gray-800">Pusat WiFi <span class="text-blue-400">Solo</span></span>
+ <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto max-w-1200px px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://github.com/pusatwifisolo/wifi/blob/main/logopwslow.png?raw=true" alt="Logo" class="w-12 h-12 mr-3">
+                <span class="text-2xl font-bold text-gray-800">Pusat WiFi <span class="text-blue-600">Solo</span></span>
+            </div>
+           
+            <nav class="hidden md:flex space-x-10">
+                <a href="#home" class="text-gray-600 hover:text-blue-600 font-medium no-highlight">Beranda</a>
+                <a href="https://pusatwifisolo.github.io/panduan/" class="text-gray-600 hover:text-blue-600 font-medium no-highlight">Panduan Layanan</a>
+                <a href="https://pusatwifisolo.github.io/galeri/" class="text-gray-600 hover:text-blue-600 font-medium no-highlight">Galeri</a>
+                <a href="https://pusatwifisolo.github.io/pembayaran/" class="text-gray-600 hover:text-blue-600 font-medium no-highlight">Pembayaran</a>
+            </nav>
+           
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 no-highlight">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </div>
-        <nav class="hidden md:flex space-x-10">
-            <a href="https://pusatwifisolo.github.io/wifi/" class="header-nav-links text-gray-600 hover:text-blue-600 no-highlight">Beranda</a>
-            <a href="https://pusatwifisolo.github.io/panduan/" class="header-nav-links text-gray-600 hover:text-blue-600 no-highlight">Panduan Layanan</a>
-            <a href="https://pusatwifisolo.github.io/pembayaran/" class="header-nav-links text-gray-600 hover:text-blue-600 no-highlight">Pembayaran</a>
-            <a href="https://pusatwifisolo.github.io/galeri/" class="header-nav-links text-gray-600 hover:text-blue-600 no-highlight">Galeri</a>
-        </nav>
-        <div class="md:hidden">
-            <button id="menu-toggle" class="text-gray-600 no-highlight">
-                <i class="fas fa-bars header-menu-toggle-icon"></i>
-            </button>
+       
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4">
+            <a href="#home" class="block py-2 text-gray-600 hover:text-blue-600 no-highlight">Beranda</a>
+            <a href="https://pusatwifisolo.github.io/panduan/" class="block py-2 text-gray-600 hover:text-blue-600 no-highlight">Panduan Layanan</a>
+            <a href="https://pusatwifisolo.github.io/galeri/" class="block py-2 text-gray-600 hover:text-blue-600 no-highlight">Galeri</a>
+            <a href="https://pusatwifisolo.github.io/pembayaran/" class="block py-2 text-gray-600 hover:text-blue-600 no-highlight">Pembayaran</a>
         </div>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4">
-        <a href="https://pusatwifisolo.github.io/wifi/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Beranda</a>
-        <a href="https://pusatwifisolo.github.io/panduan/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Panduan Layanan</a>
-        <a href="https://pusatwifisolo.github.io/pembayaran/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Pembayaran</a>
-        <a href="https://pusatwifisolo.github.io/galeri/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Galeri</a>
-    </div>
-</header>
+    </header>
     <div class="loading-screen" id="loadingScreen">
         <div class="ring">Loading<span></span></div>
     </div>
@@ -595,3 +598,4 @@
     </script>
 </body>
 </html>
+
