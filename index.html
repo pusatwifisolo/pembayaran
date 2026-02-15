@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-     
+    
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-     
+    
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
@@ -28,13 +28,13 @@
             --glow-blue: rgba(37, 99, 235, 0.35);
             --glow-cyan: rgba(6, 182, 212, 0.45);
         }
-     
+    
         body {
             margin: 0;
             overflow-x: hidden;
             background: #f8fafc;
         }
-     
+    
         .loading-screen {
             position: fixed;
             top: 0;
@@ -47,7 +47,7 @@
             justify-content: center;
             align-items: center;
         }
-     
+    
         .ring {
             position: absolute;
             top: 50%;
@@ -68,7 +68,7 @@
             text-shadow: 0 0 10px #3b82f6;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
-     
+    
         .ring:before {
             content: '';
             position: absolute;
@@ -82,7 +82,7 @@
             border-radius: 50%;
             animation: animateC 2s linear infinite;
         }
-     
+    
         .ring span {
             display: block;
             position: absolute;
@@ -94,7 +94,7 @@
             transform-origin: left;
             animation: animate 2s linear infinite;
         }
-     
+    
         .ring span:before {
             content: '';
             position: absolute;
@@ -106,7 +106,7 @@
             right: -8px;
             box-shadow: 0 0 20px #3b82f6;
         }
-     
+    
         header {
             background: white;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -115,32 +115,22 @@
             z-index: 50;
             top: 0;
         }
-     
+    
         header .container {
             max-width: 1200px;
-            padding: 1rem 1rem;
+            padding: 1rem;
         }
-        .header-logo-text {
-            font-size: 24px;
-            font-weight: 700;
-        }
-        .header-nav-links {
-            font-size: 16px;
-            font-weight: 500;
-        }
-        .header-mobile-menu-links {
-            font-size: 16px;
-            font-weight: 400;
-        }
-        .header-menu-toggle-icon {
-            font-size: 24px;
-        }
-     
+    
+        .header-logo-text { font-size: 24px; font-weight: 700; }
+        .header-nav-links { font-size: 16px; font-weight: 500; }
+        .header-mobile-menu-links { font-size: 16px; font-weight: 400; }
+        .header-menu-toggle-icon { font-size: 24px; }
+    
         .hero {
             position: relative;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: 50% center;
             color: white;
@@ -149,13 +139,13 @@
             justify-content: center;
             z-index: 10;
         }
-     
+    
         .hero .container {
             padding: 250px 2rem 0;
             text-align: center;
             max-width: 1200px;
         }
-     
+    
         .card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-radius: 15px;
@@ -168,18 +158,18 @@
             background: white;
             box-shadow: 0 6px 16px rgba(0,0,0,0.08);
         }
-     
+    
         .card:hover {
             transform: translateY(-8px);
             box-shadow: 0 10px 24px rgba(0,0,0,0.12);
         }
-     
+    
         .section-title {
             position: relative;
             display: inline-block;
             padding-bottom: 10px;
         }
-     
+    
         .section-title::after {
             content: '';
             position: absolute;
@@ -190,7 +180,7 @@
             left: 25%;
             transform: translateX(-25%);
         }
-     
+    
         .image-overlay {
             position: fixed;
             top: 0;
@@ -206,18 +196,18 @@
             visibility: hidden;
             transition: opacity 0.5s, visibility 0.5s;
         }
-     
+    
         .image-overlay.show {
             opacity: 1;
             visibility: visible;
         }
-     
+    
         .image-overlay img {
             max-width: 90%;
             max-height: 90%;
             border-radius: 10px;
         }
-     
+    
         .image-overlay .close-btn {
             position: absolute;
             top: 15px;
@@ -227,12 +217,12 @@
             color: white;
             transition: color 0.3s, transform 0.3s;
         }
-     
+    
         .image-overlay .close-btn:hover {
             color: var(--primary);
             transform: rotate(90deg) scale(1.2);
         }
-     
+    
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -249,22 +239,22 @@
             transition: transform 0.3s ease-in-out;
             cursor: pointer;
         }
-     
+    
         .whatsapp-float:hover {
             transform: scale(1.1);
         }
-     
+    
         .whatsapp-float img {
             width: 40px;
             height: 40px;
         }
-     
+    
         .no-highlight {
             outline: none;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
         }
-     
+    
         .transfer-details {
             display: grid;
             grid-template-columns: auto 20px 1fr;
@@ -273,17 +263,18 @@
             text-align: left;
             padding-left: 1.5rem;
         }
-     
+    
         .transfer-details .colon {
             justify-self: center;
             text-align: center;
             width: 20px;
         }
-     
+    
         .payment-methods {
-            margin-top: 90px;
+            margin-top: 110px;
+            padding-top: 2rem;
         }
-     
+    
         .popup-notification {
             display: flex;
             align-items: center;
@@ -306,19 +297,12 @@
             transform: translate(-50%, -50%);
             z-index: 5000;
         }
-     
+    
         .popup-notification:hover {
             background-position: 100% 100%;
             box-shadow: 0 15px 30px var(--glow-cyan);
         }
-     
-        .popup-notification i {
-            font-size: 1.2rem;
-            color: #fff;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-     
-        /* Tombol utama - shadow dinaikkan sedikit */
+    
         .btn-primary {
             background: var(--gradient-btn);
             background-size: 200% 200%;
@@ -327,7 +311,7 @@
             color: white;
             font-weight: 600;
             transition: all 0.5s ease;
-            box-shadow: 0 8px 20px var(--glow-blue); /* dinaikkan dari 6px 16px */
+            box-shadow: 0 8px 20px var(--glow-blue);
             position: relative;
             overflow: hidden;
             display: inline-block;
@@ -337,11 +321,13 @@
             user-select: none;
             min-width: 130px;
         }
+    
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 14px 32px var(--glow-cyan); /* hover shadow juga dinaikkan */
+            box-shadow: 0 14px 32px var(--glow-cyan);
             background-position: 100% 100%;
         }
+    
         .btn-primary::after {
             content: '';
             position: absolute;
@@ -353,15 +339,17 @@
             opacity: 0;
             transition: opacity 0.6s;
         }
+    
         .btn-primary:hover::after {
             opacity: 1;
             animation: ripple 1.2s ease-out;
         }
+    
         @keyframes ripple {
             0% { transform: scale(0.4); opacity: 1; }
             100% { transform: scale(2); opacity: 0; }
         }
-        /* Layout tombol di card */
+    
         .card .flex-wrap {
             display: flex;
             flex-wrap: wrap;
@@ -369,6 +357,7 @@
             gap: 0.75rem;
             margin-top: 1.5rem;
         }
+    
         @media (min-width: 1024px) {
             .hero { background-position: 50% center; }
             .hero .container { padding: 250px 2rem 0; }
@@ -377,7 +366,7 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 1.25rem;
                 max-width: 1200px;
-                margin: 119.5px auto 2.5rem;
+                margin: 130px auto 2.5rem;
             }
             .card {
                 max-width: 450px;
@@ -402,7 +391,7 @@
                 gap: 1rem;
             }
         }
-     
+    
         @media (max-width: 1023px) {
             .hero { min-height: 100vh; background-position: center center; }
             .hero .container {
@@ -413,10 +402,10 @@
                 align-items: center;
             }
             .payment-methods {
-                margin-top: 90px;
+                margin-top: 110px;
                 display: flex;
                 flex-direction: column;
-                gap: 0.75rem;
+                gap: 1rem;
                 width: 100%;
                 margin-bottom: 2rem;
             }
@@ -432,8 +421,23 @@
                 gap: 0.75rem;
             }
         }
-     
-        /* Icon di Cara Pembayaran */
+    
+        #payment-steps {
+            margin-top: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding: 2.5rem 1.5rem;
+        }
+    
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 2.5rem 0 1.5rem;
+        }
+    
+        footer .container {
+            max-width: 1200px;
+        }
+    
         #payment-steps i {
             color: var(--primary);
             transition: color 0.3s ease;
@@ -445,7 +449,7 @@
 </head>
 <body>
     <header class="bg-white shadow-md fixed w-full z-50">
-        <div class="container mx-auto max-w-1200px px-4 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center">
                 <img src="https://github.com/pusatwifisolo/wifi/blob/main/logopwslow.png?raw=true" alt="Logo" class="w-12 h-12 mr-3">
                 <span class="header-logo-text text-gray-800">Pusat WiFi <span class="text-blue-600">Solo</span></span>
@@ -469,17 +473,20 @@
             <a href="https://pusatwifisolo.github.io/galeri/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Galeri</a>
         </div>
     </header>
+
     <div class="loading-screen" id="loadingScreen">
         <div class="ring">Loading<span></span></div>
     </div>
+
     <section class="hero" id="mainContainer">
-        <div class="container mx-auto max-w-1200px px-4 text-center">
+        <div class="container mx-auto px-4 text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-4">Pembayaran</h1>
             <h2 class="text-2xl md:text-3xl font-bold mb-4">Pusat WiFi Solo</h2>
             <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Lunas Lebih Cepat, Internet Lebih Lancar</p>
             <p class="text-lg md:text-xl mb-12 italic max-w-3xl mx-auto">Proses Mudah, Aman, dan Terpercaya</p>
         </div>
     </section>
+
     <div class="container mx-auto max-w-1200px px-4">
         <section class="payment-methods">
             <!-- TRANSFER -->
@@ -511,7 +518,8 @@
                     </a>
                 </div>
             </div>
-            <!-- QRIS - tanpa tombol salin nominal -->
+
+            <!-- QRIS -->
             <div class="card p-4 md:p-6 text-center qris">
                 <h3 class="text-lg md:text-2xl font-bold mb-4">QRIS</h3>
                 <img src="https://github.com/pusatwifisolo/wifi/blob/main/qrislogo.png?raw=true" alt="QRIS Logo" class="mx-auto mb-4">
@@ -529,9 +537,9 @@
                             Konfirmasi
                         </a>
                     </div>
-                    <!-- Tombol Salin Nominal dihilangkan -->
                 </div>
             </div>
+
             <!-- CASH -->
             <div class="card p-4 md:p-6 text-center cash">
                 <h3 class="text-lg md:text-2xl font-bold mb-4">CASH</h3>
@@ -544,28 +552,32 @@
                 </div>
             </div>
         </section>
-        <section id="payment-steps" class="bg-white p-6 rounded-xl shadow-md text-center">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 section-title mx-auto">Cara Pembayaran</h2>
-            <ul class="text-left max-w-2xl mx-auto text-sm md:text-base space-y-3">
-                <li class="flex items-start"><i class="fas fa-user-plus mr-4 mt-1"></i><span>Pilih metode pembayaran (Transfer, QRIS, atau Cash).</span></li>
-                <li class="flex items-start"><i class="fas fa-list mr-4 mt-1"></i><span>Untuk Transfer: Gunakan nomor rekening BCA: 817-540-2043 (A/N: RIDWAN BUDI LAKSONO) atau salin nomor rekening dengan tombol "Salin Rekening".</span></li>
-                <li class="flex items-start"><i class="fas fa-qrcode mr-4 mt-1"></i><span>Untuk QRIS: Scan kode QR menggunakan tombol "Tampilkan".</span></li>
-                <li class="flex items-start"><i class="fas fa-money-bill-wave mr-4 mt-1"></i><span>Untuk Cash: Hubungi kami melalui WhatsApp untuk detail pembayaran tunai.</span></li>
-                <li class="flex items-start"><i class="fas fa-comment-alt mr-4 mt-1"></i><span>Kirim bukti atau konfirmasi pembayaran melalui WhatsApp ke nomor <a href="javascript:void(0)" class="text-blue-600 hover:text-blue-800 no-highlight" onclick="redirectToWhatsApp()">0857 7777 3541</a>.</span></li>
-                <li class="flex items-start"><i class="fas fa-clock mr-4 mt-1"></i><span>Tunggu konfirmasi dari tim kami dalam waktu 1x24 jam.</span></li>
-                <li class="flex items-start"><i class="fas fa-check-circle mr-4 mt-1"></i><span>Nikmati layanan internet tanpa gangguan!</span></li>
-            </ul>
-        </section>
+
+	<section id="payment-steps" class="bg-white rounded-xl shadow-md text-center">
+		<h2 class="text-2xl md:text-3xl font-bold mb-4 section-title mx-auto">Cara Pembayaran</h2>
+		<ul class="text-left max-w-2xl mx-auto text-sm md:text-base space-y-3">
+			<li class="flex items-start"><i class="fas fa-user-plus mr-4 mt-1"></i><span>Pilih metode pembayaran (Transfer, QRIS, atau Cash).</span></li>
+			<li class="flex items-start"><i class="fas fa-list mr-4 mt-1"></i><span>Untuk Transfer: Gunakan nomor rekening BCA: 817-540-2043<br>(A/N: RIDWAN BUDI LAKSONO) atau salin nomor rekening<br>dengan tombol "Salin Rekening".</span></li>
+			<li class="flex items-start"><i class="fas fa-qrcode mr-4 mt-1"></i><span>Untuk QRIS: Scan kode QR menggunakan tombol "Tampilkan".</span></li>
+			<li class="flex items-start"><i class="fas fa-money-bill-wave mr-4 mt-1"></i><span>Untuk Cash: Hubungi kami melalui WhatsApp untuk detail pembayaran tunai.</span></li>
+			<li class="flex items-start"><i class="fas fa-comment-alt mr-4 mt-1"></i><span>Kirim bukti atau konfirmasi pembayaran melalui WhatsApp<br>ke nomor <a href="javascript:void(0)" class="text-blue-600 hover:text-blue-800 no-highlight" onclick="redirectToWhatsApp()">0857 7777 3541</a>.</span></li>
+			<li class="flex items-start"><i class="fas fa-clock mr-4 mt-1"></i><span>Tunggu konfirmasi dari tim kami dalam waktu 1x24 jam.</span></li>
+			<li class="flex items-start"><i class="fas fa-check-circle mr-4 mt-1"></i><span>Nikmati layanan internet tanpa gangguan!</span></li>
+		</ul>
+	</section>
     </div>
+
     <div class="image-overlay" id="imageOverlay">
         <span class="close-btn" onclick="closeImageOverlay()">×</span>
         <img id="overlayImage" src="" alt="Payment Image">
     </div>
+
     <div class="whatsapp-float" id="whatsappFloat" onclick="redirectToContactWhatsApp()">
         <img src="https://github.com/ridwanbudilaksono/wifi/blob/main/whatsapp.png?raw=true" alt="WhatsApp">
     </div>
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto max-w-1200px px-4 pt-12">
+
+    <footer>
+        <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <div class="flex items-center mb-6">
@@ -595,13 +607,13 @@
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400">
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
                 <p>© 2025 Pusat WiFi Solo. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
     <script type="text/javascript">
-        // Mobile menu toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
@@ -660,6 +672,8 @@
                 popup.innerHTML = '<i class="fas fa-check-circle"></i> Rekening telah disalin';
                 document.body.appendChild(popup);
                 setTimeout(() => popup.remove(), 2500);
+            }).catch(() => {
+                alert('Gagal menyalin nomor rekening');
             });
         }
         function redirectToWhatsApp(method = '') {
@@ -669,10 +683,9 @@
         function redirectToContactWhatsApp() {
             redirectToWhatsApp();
         }
-        // Animasi card saat masuk viewport
         const cards = document.querySelectorAll('.card');
         const observer = new IntersectionObserver(entries => {
-            entries.forEach((entry, i) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
@@ -688,4 +701,3 @@
     </script>
 </body>
 </html>
-
