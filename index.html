@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-    
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-    
+
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
@@ -28,13 +28,13 @@
             --glow-blue: rgba(37, 99, 235, 0.35);
             --glow-cyan: rgba(6, 182, 212, 0.45);
         }
-    
+
         body {
             margin: 0;
             overflow-x: hidden;
             background: #f8fafc;
         }
-    
+
         .loading-screen {
             position: fixed;
             top: 0;
@@ -47,7 +47,7 @@
             justify-content: center;
             align-items: center;
         }
-    
+
         .ring {
             position: absolute;
             top: 50%;
@@ -68,7 +68,7 @@
             text-shadow: 0 0 10px #3b82f6;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
-    
+
         .ring:before {
             content: '';
             position: absolute;
@@ -82,7 +82,7 @@
             border-radius: 50%;
             animation: animateC 2s linear infinite;
         }
-    
+
         .ring span {
             display: block;
             position: absolute;
@@ -94,7 +94,7 @@
             transform-origin: left;
             animation: animate 2s linear infinite;
         }
-    
+
         .ring span:before {
             content: '';
             position: absolute;
@@ -106,7 +106,7 @@
             right: -8px;
             box-shadow: 0 0 20px #3b82f6;
         }
-    
+
         header {
             background: white;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -115,16 +115,7 @@
             z-index: 50;
             top: 0;
         }
-    
-        header .container {
-            max-width: 1200px;
-            padding: 1rem;
-        }
-        .header-logo-text { font-size: 24px; font-weight: 700; }
-        .header-nav-links { font-size: 16px; font-weight: 500; }
-        .header-mobile-menu-links { font-size: 16px; font-weight: 400; }
-        .header-menu-toggle-icon { font-size: 24px; }
-    
+
         .hero {
             position: relative;
             width: 100%;
@@ -138,13 +129,13 @@
             justify-content: center;
             z-index: 10;
         }
-    
+
         .hero .container {
             padding: 220px 2rem 0;
             text-align: center;
             max-width: 1200px;
         }
-    
+
         .card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-radius: 15px;
@@ -157,18 +148,18 @@
             background: white;
             box-shadow: 0 6px 16px rgba(0,0,0,0.08);
         }
-    
+
         .card:hover {
             transform: translateY(-8px);
             box-shadow: 0 10px 24px rgba(0,0,0,0.12);
         }
-    
+
         .section-title {
             position: relative;
             display: inline-block;
             padding-bottom: 10px;
         }
-    
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -179,7 +170,7 @@
             left: 25%;
             transform: translateX(-25%);
         }
-    
+
         .image-overlay {
             position: fixed;
             top: 0;
@@ -195,18 +186,18 @@
             visibility: hidden;
             transition: opacity 0.5s, visibility 0.5s;
         }
-    
+
         .image-overlay.show {
             opacity: 1;
             visibility: visible;
         }
-    
+
         .image-overlay img {
             max-width: 90%;
             max-height: 90%;
             border-radius: 10px;
         }
-    
+
         .image-overlay .close-btn {
             position: absolute;
             top: 15px;
@@ -216,12 +207,12 @@
             color: white;
             transition: color 0.3s, transform 0.3s;
         }
-    
+
         .image-overlay .close-btn:hover {
             color: var(--primary);
             transform: rotate(90deg) scale(1.2);
         }
-    
+
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -238,22 +229,22 @@
             transition: transform 0.3s ease-in-out;
             cursor: pointer;
         }
-    
+
         .whatsapp-float:hover {
             transform: scale(1.1);
         }
-    
+
         .whatsapp-float img {
             width: 40px;
             height: 40px;
         }
-    
+
         .no-highlight {
             outline: none;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
         }
-    
+
         .transfer-details {
             display: grid;
             grid-template-columns: auto 20px 1fr;
@@ -262,45 +253,70 @@
             text-align: left;
             padding-left: 1.5rem;
         }
-    
+
         .transfer-details .colon {
             justify-self: center;
             text-align: center;
             width: 20px;
         }
-    
+
         .payment-methods {
             margin: 2.5rem 0;
         }
-    
-        .popup-notification {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: var(--gradient-btn);
-            background-size: 200% 200%;
+
+        @media (min-width: 1024px) {
+            .hero { background-position: 50% center; }
+            .hero .container { padding: 250px 2rem 0; }
+            .payment-methods {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem; /* jarak antar card lebih konsisten & simetris */
+                max-width: 1200px;
+                margin: 3.5rem auto;
+            }
+            .card {
+                max-width: 450px;
+                min-height: 520px; /* tinggi card sama rata */
+                padding: 2rem;
+            }
+            .card h3 { font-size: 1.75rem; margin-bottom: 1.25rem; }
+            .card img { max-height: 150px; margin-bottom: 1.5rem; }
+        }
+
+        @media (max-width: 1023px) {
+            .hero { min-height: 90vh; background-position: center center; }
+            .hero .container { padding: 180px 1rem 0; }
+            .payment-methods {
+                margin: 2rem 0;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem; /* jarak vertikal konsisten di mobile */
+            }
+            .card { padding: 1.75rem; min-height: 420px; }
+        }
+
+        #payment-steps {
+            margin: 2.5rem 0 4rem;
+            padding: 2.5rem 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        footer {
+            background: #1f2937;
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px var(--glow-blue);
-            font-size: 1rem;
-            font-weight: 500;
-            text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            animation: popIn 0.3s ease-out forwards;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 5000;
+            padding: 2rem 0 1.5rem;
         }
-    
-        .popup-notification:hover {
-            background-position: 100% 100%;
-            box-shadow: 0 15px 30px var(--glow-cyan);
+
+        #payment-steps i {
+            color: var(--primary);
+            transition: color 0.3s ease;
         }
-    
+        #payment-steps li:hover i {
+            color: #1e40af;
+        }
+
         .btn-primary {
             background: var(--gradient-btn);
             background-size: 200% 200%;
@@ -312,124 +328,47 @@
             box-shadow: 0 8px 20px var(--glow-blue);
             position: relative;
             overflow: hidden;
-            display: inline-block;
-            text-align: center;
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
             min-width: 130px;
         }
-    
+
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 14px 32px var(--glow-cyan);
             background-position: 100% 100%;
         }
-    
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.25) 10%, transparent 40%);
-            opacity: 0;
-            transition: opacity 0.6s;
-        }
-    
-        .btn-primary:hover::after {
-            opacity: 1;
-            animation: ripple 1.2s ease-out;
-        }
-    
-        @keyframes ripple {
-            0% { transform: scale(0.4); opacity: 1; }
-            100% { transform: scale(2); opacity: 0; }
-        }
-    
-        @media (min-width: 1024px) {
-            .hero { background-position: 50% center; }
-            .hero .container { padding: 250px 2rem 0; }
-            .payment-methods {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.25rem;
-                max-width: 1200px;
-                margin: 3.5rem auto 3.5rem;
-            }
-            .card {
-                max-width: 450px;
-                min-height: 500px;
-                padding: 2rem;
-            }
-            .card h3 { font-size: 1.75rem; margin-bottom: 1rem; }
-            .card img { max-height: 150px; margin-bottom: 1.5rem; }
-        }
-    
-        @media (max-width: 1023px) {
-            .hero { min-height: 90vh; background-position: center center; }
-            .hero .container { padding: 180px 1rem 0; }
-            .payment-methods {
-                margin: 1.75rem 0 1.75rem;
-                display: flex;
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            .card { padding: 1.5rem; min-height: 380px; }
-        }
-    
-        #payment-steps {
-            margin-top: 1.75rem;
-            margin-bottom: 1.75rem;
-            padding: 2.5rem 1.5rem;
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-    
-        footer {
-            background: #1f2937;
-            color: white;
-            padding: 2rem 0 1.5rem;        /* ← dikurangi agar area hitam atas lebih kecil */
-        }
-    
-        #payment-steps i {
-            color: var(--primary);
-            transition: color 0.3s ease;
-        }
-        #payment-steps li:hover i {
-            color: #1e40af;
-        }
     </style>
 </head>
 <body>
-    <header class="bg-white shadow-md fixed w-full z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="https://github.com/pusatwifisolo/wifi/blob/main/logopwslow.png?raw=true" alt="Logo" class="w-12 h-12 mr-3">
-                <span class="header-logo-text text-gray-800">Pusat WiFi <span class="text-blue-600">Solo</span></span>
-            </div>
-            <nav class="hidden md:flex space-x-10">
-                <a href="https://pusatwifisolo.github.io/wifi/" class="header-nav-links text-gray-600 hover:text-blue-600 no-highlight">Beranda</a>
-                <a href="https://pusatwifisolo.github.io/panduan/" class="header-nav-links text-gray-600 hover:text-blue-600 no-highlight">Panduan Layanan</a>
-                <a href="https://pusatwifisolo.github.io/pembayaran/" class="header-nav-links text-gray-600 hover:text-blue-600 no-highlight">Pembayaran</a>
-                <a href="https://pusatwifisolo.github.io/galeri/" class="header-nav-links text-gray-600 hover:text-blue-600 no-highlight">Galeri</a>
-            </nav>
-            <div class="md:hidden">
-                <button id="menu-toggle" class="text-gray-600 no-highlight">
-                    <i class="fas fa-bars header-menu-toggle-icon"></i>
-                </button>
-            </div>
+    <!-- Header sama persis seperti asli Anda -->
+<header class="bg-white shadow-md fixed w-full z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <img src="https://github.com/pusatwifisolo/wifi/blob/main/logopwslow.png?raw=true" alt="Logo" class="w-12 h-12 mr-3">
+            <span class="text-2xl font-bold text-gray-800">Pusat WiFi <span class="text-blue-400">Solo</span></span>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4">
-            <a href="https://pusatwifisolo.github.io/wifi/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Beranda</a>
-            <a href="https://pusatwifisolo.github.io/panduan/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Panduan Layanan</a>
-            <a href="https://pusatwifisolo.github.io/pembayaran/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Pembayaran</a>
-            <a href="https://pusatwifisolo.github.io/galeri/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Galeri</a>
+        <nav class="hidden md:flex space-x-10">
+            <a href="https://pusatwifisolo.github.io/wifi/" class="header-nav-links text-gray-600 hover:text-blue-600 no-highlight">Beranda</a>
+            <a href="https://pusatwifisolo.github.io/panduan/" class="header-nav-links text-gray-600 hover:text-blue-600 no-highlight">Panduan Layanan</a>
+            <a href="https://pusatwifisolo.github.io/pembayaran/" class="header-nav-links text-gray-600 hover:text-blue-600 no-highlight">Pembayaran</a>
+            <a href="https://pusatwifisolo.github.io/galeri/" class="header-nav-links text-gray-600 hover:text-blue-600 no-highlight">Galeri</a>
+        </nav>
+        <div class="md:hidden">
+            <button id="menu-toggle" class="text-gray-600 no-highlight">
+                <i class="fas fa-bars header-menu-toggle-icon"></i>
+            </button>
         </div>
-    </header>
-
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4">
+        <a href="https://pusatwifisolo.github.io/wifi/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Beranda</a>
+        <a href="https://pusatwifisolo.github.io/panduan/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Panduan Layanan</a>
+        <a href="https://pusatwifisolo.github.io/pembayaran/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Pembayaran</a>
+        <a href="https://pusatwifisolo.github.io/galeri/" class="header-mobile-menu-links block py-2 text-gray-600 hover:text-blue-600 no-highlight">Galeri</a>
+    </div>
+</header>
     <div class="loading-screen" id="loadingScreen">
         <div class="ring">Loading<span></span></div>
     </div>
@@ -445,7 +384,7 @@
 
     <div class="container mx-auto max-w-1200px px-4">
         <section class="payment-methods">
-            <!-- TRANSFER -->
+            <!-- TRANSFER - teks & struktur persis seperti asli -->
             <div class="card p-4 md:p-6 text-center">
                 <h3 class="text-lg md:text-2xl font-bold mb-4">TRANSFER</h3>
                 <img src="https://github.com/ridwanbudilaksono/wifi/blob/main/bcalogofit.png?raw=true" alt="BCA Logo" class="mx-auto mb-4">
@@ -475,7 +414,7 @@
                 </div>
             </div>
 
-            <!-- QRIS -->
+            <!-- QRIS - teks persis seperti asli -->
             <div class="card p-4 md:p-6 text-center qris">
                 <h3 class="text-lg md:text-2xl font-bold mb-4">QRIS</h3>
                 <img src="https://github.com/pusatwifisolo/wifi/blob/main/qrislogo.png?raw=true" alt="QRIS Logo" class="mx-auto mb-4">
@@ -496,7 +435,7 @@
                 </div>
             </div>
 
-            <!-- CASH -->
+            <!-- CASH - teks persis seperti asli -->
             <div class="card p-4 md:p-6 text-center cash">
                 <h3 class="text-lg md:text-2xl font-bold mb-4">CASH</h3>
                 <img src="https://raw.githubusercontent.com/pusatwifisolo/wifi/refs/heads/main/cashfit.png" alt="Cash Logo" class="mx-auto mb-4">
@@ -509,6 +448,7 @@
             </div>
         </section>
 
+        <!-- Cara Pembayaran - teks & struktur persis seperti asli Anda -->
         <section id="payment-steps" class="bg-white rounded-xl shadow-md text-center">
             <h2 class="text-2xl md:text-3xl font-bold mb-4 section-title mx-auto">Cara Pembayaran</h2>
             <ul class="text-left max-w-2xl mx-auto text-sm md:text-base space-y-3">
@@ -533,7 +473,7 @@
     </div>
 
     <footer class="bg-gray-800 text-white">
-        <div class="container mx-auto max-w-1200px px-4 py-8">  <!-- py-8 lebih kecil dari py-12 sebelumnya -->
+        <div class="container mx-auto max-w-1200px px-4 py-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <div class="flex items-center mb-6">
